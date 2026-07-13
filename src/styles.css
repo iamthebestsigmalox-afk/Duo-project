@@ -1,0 +1,189 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", "Helvetica Neue", sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-copper: var(--copper);
+  --color-copper-dark: var(--copper-dark);
+  --color-forest: var(--forest);
+  --color-forest-light: var(--forest-light);
+  --color-sale: var(--sale);
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.99 0.003 80);
+  --foreground: oklch(0.2 0.02 40);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 40);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 40);
+  --primary: oklch(0.55 0.12 45);
+  --primary-foreground: oklch(0.99 0.003 80);
+  --secondary: oklch(0.96 0.01 70);
+  --secondary-foreground: oklch(0.25 0.02 40);
+  --muted: oklch(0.96 0.008 80);
+  --muted-foreground: oklch(0.5 0.02 50);
+  --accent: oklch(0.55 0.12 45);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.5 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.01 70);
+  --input: oklch(0.9 0.01 70);
+  --ring: oklch(0.55 0.12 45);
+  --copper: oklch(0.6 0.14 45);
+  --copper-dark: oklch(0.42 0.09 40);
+  --forest: oklch(0.28 0.04 155);
+  --forest-light: oklch(0.35 0.05 155);
+  --sale: oklch(0.42 0.18 25);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+}
+
+@utility container-x {
+  margin-inline: auto;
+  max-width: 1280px;
+  padding-inline: 1.5rem;
+}
+
+@utility section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+@utility btn-copper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.25rem;
+  background: linear-gradient(180deg, oklch(0.6 0.14 45), oklch(0.42 0.09 40));
+  color: white;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  transition: filter 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  border-radius: 2px;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 12px 28px -12px oklch(0.42 0.09 40 / 0.6);
+    transform: translateY(-1px);
+  }
+}
+
+@utility btn-ghost-copper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.25rem;
+  border: 1px solid var(--color-copper);
+  color: var(--color-copper-dark);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  transition: background 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+  &:hover {
+    background: var(--color-copper);
+    color: white;
+  }
+}
+
+@utility scrollbar-none {
+  &::-webkit-scrollbar { display: none; }
+  scrollbar-width: none;
+}
+
+.bg-pattern {
+  background-image:
+    radial-gradient(circle at 10% 20%, oklch(0.55 0.12 45 / 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, oklch(0.55 0.12 45 / 0.03) 0%, transparent 40%);
+  background-color: oklch(0.98 0.005 80);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, oklch(0.32 0.05 155) 0%, oklch(0.42 0.08 60) 100%);
+}
+
+.footer-gradient {
+  background: linear-gradient(120deg, oklch(0.22 0.03 155) 0%, oklch(0.28 0.05 160) 60%, oklch(0.32 0.06 150) 100%);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp 0.7s ease-out both; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-copper-shine {
+  background: linear-gradient(90deg, var(--color-copper-dark) 0%, oklch(0.85 0.14 60) 50%, var(--color-copper-dark) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+.glass-card {
+  background: color-mix(in oklab, white 70%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid color-mix(in oklab, white 60%, transparent);
+}
+
+.copper-glow {
+  box-shadow: 0 0 0 1px oklch(0.6 0.14 45 / 0.15), 0 20px 60px -20px oklch(0.42 0.09 40 / 0.4);
+}
+
